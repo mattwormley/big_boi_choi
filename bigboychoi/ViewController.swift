@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    @IBOutlet weak var namesLabel: UILabel!
+    weak var tableView: UITableView!
     
     var halfInningLabels:[UILabel] = []
     var game:Game = Game()
@@ -43,8 +43,26 @@ class ViewController: UIViewController {
             orderedPlayers.append(orderedPlayers.removeFirst())
         }
     }
+    override func loadView() {
+        super.loadView()
+        
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            self.view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: tableView.topAnchor),
+            self.view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
+            self.view.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            self.view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+            ])
+        self.tableView = tableView
+    }
 
     override func viewDidLoad() {
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        
+        self.tableView.dataSource = self
+
         for i in 0...8 {
             let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
             headerLabel.center = CGPoint(x: 80 + i * 26, y: 574)
@@ -132,7 +150,9 @@ class ViewController: UIViewController {
         currentHalfInningLabel.text = String(currentHalfInningData.runsScored!)
         currentHalfInningLabel.textColor = UIColor.white
         currentHalfInningLabel.backgroundColor = UIColor.green
-        namesLabel.text = currentHalfInningData.orderedPlayers.map { players[$0].name }.joined(separator:", ")
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,3 +163,17 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.players.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        let halfInningData = self.game.halfInnings[self.currentHalfInning]
+        let player = self.players[halfInningData.orderedPlayers[indexPath.item]]
+        cell.textLabel?.text = player.name
+        return cell
+    }
+}
