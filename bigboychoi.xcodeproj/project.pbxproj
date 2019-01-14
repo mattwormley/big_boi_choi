@@ -13,6 +13,7 @@
 		6901387421EAC6C600AB6C70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6901387321EAC6C600AB6C70 /* Assets.xcassets */; };
 		6901387721EAC6C600AB6C70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6901387521EAC6C600AB6C70 /* LaunchScreen.storyboard */; };
 		6901388221EAC6C600AB6C70 /* bigboychoiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6901388121EAC6C600AB6C70 /* bigboychoiTests.swift */; };
+		6901388D21EBC57900AB6C70 /* BBCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6901388C21EBC57900AB6C70 /* BBCModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		6901387D21EAC6C600AB6C70 /* bigboychoiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bigboychoiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6901388121EAC6C600AB6C70 /* bigboychoiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bigboychoiTests.swift; sourceTree = "<group>"; };
 		6901388321EAC6C600AB6C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6901388C21EBC57900AB6C70 /* BBCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BBCModel.swift; path = model/BBCModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		6901386B21EAC6C500AB6C70 /* bigboychoi */ = {
 			isa = PBXGroup;
 			children = (
+				6901388C21EBC57900AB6C70 /* BBCModel.swift */,
 				6901386C21EAC6C500AB6C70 /* AppDelegate.swift */,
 				6901386E21EAC6C500AB6C70 /* ViewController.swift */,
 				6901387021EAC6C500AB6C70 /* Main.storyboard */,
@@ -199,6 +202,7 @@
 			files = (
 				6901386F21EAC6C500AB6C70 /* ViewController.swift in Sources */,
 				6901386D21EAC6C500AB6C70 /* AppDelegate.swift in Sources */,
+				6901388D21EBC57900AB6C70 /* BBCModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A43VHPJ3ZQ;
 				INFOPLIST_FILE = bigboychoi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -376,6 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A43VHPJ3ZQ;
 				INFOPLIST_FILE = bigboychoi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
